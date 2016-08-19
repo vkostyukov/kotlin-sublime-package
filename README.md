@@ -22,14 +22,14 @@ Download
 Installation
 -----------
 
-There are four ways to install Kotlin Sublime Package:
+There are four ways to install the Kotlin Sublime Package:
 
 1. Using archived package (<code>kotlin.sublime-package</code>)
 2. Using version control system (GitHub)
 3. Using raw files (<code>Kotlin.tmLanguage</code>) from repository tree
 4. Using [Sublime Package Control](https://packagecontrol.io/packages/Kotlin)
 
-Here are [instructions](http://sublimetext.info/docs/en/extensibility/packages.html) with detailed steps for any type of installation.
+Here are [instructions](http://docs.sublimetext.info/en/latest/extensibility/packages.html) with detailed steps for any type of installation.
 
 Contribution
 ------------
@@ -37,10 +37,10 @@ Contribution
 If you want to contribute to this project, first of all you need to download the latest version of [AAAPackageDev](https://bitbucket.org/guillermooo/aaapackagedev) - useful tool for Sublime Text Packages developing.
 Then you can follow the tutorials:
 
-* [Syntax Definitions](http://sublimetext.info/docs/en/extensibility/syntaxdefs.html) for changing the syntax definition file
-* [Snippets](http://sublimetext.info/docs/en/extensibility/snippets.html) for changing the snippet files
+* [Syntax Definitions](http://docs.sublimetext.info/en/latest/extensibility/syntaxdefs.html) for changing the syntax definition file
+* [Snippets](http://docs.sublimetext.info/en/latest/extensibility/snippets.html) for changing the snippet files
 
-There is also [a full documentation](http://sublimetext.info/docs/en/extensibility/extensibility.html) for Sublime Text extensibility.
+There is also [documentation](http://docs.sublimetext.info/en/latest/extensibility/extensibility.html) for extending functionality to Sublime Text.
 
 The best way to contribute is to send pull-requests though GitHub interface.
 
