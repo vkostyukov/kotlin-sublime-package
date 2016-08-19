@@ -1,9 +1,9 @@
-Kotlin Sublime Text 2 Package
+Kotlin Syntax Highlighter
 =============================
 
-This is the [Sublime Text 2](https://www.sublimetext.com/) package for the [Kotlin](https://kotlinlang.org/) programming language.
+This is the [Sublime Text](https://www.sublimetext.com/) package for [Kotlin](https://kotlinlang.org/) syntax highlighting.
 
-![Kotlin Sublime Text 2 Package Screenshoot](https://raw.github.com/vkostyukov/kotlin-sublime-package/master/scrot.png)
+![Kotlin Syntax Highlighting Screenshoot](https://raw.github.com/vkostyukov/kotlin-sublime-package/master/scrot.png)
 
 Overview
 --------
