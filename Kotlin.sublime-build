@@ -1,0 +1,16 @@
+{
+    "path" : "/usr/local/bin:$PATH",
+    "selector" : "source.Kotlin",
+    "cmd" : "kotlinc \"${file}\" -include-runtime -d ${file_base_name}.jar", 
+    "variants": [{
+        "cmd": "kotlinc \"${file}\" -include-runtime -d ${file_base_name}.jar",
+        "name": "Compile"
+      },{
+        "name": "Run",
+        "cmd": "java -jar ${file_base_name}.jar"
+    }],
+    "shell" : "true",
+    "windows" : {
+      "path" : "$PATH"
+    }
+}
