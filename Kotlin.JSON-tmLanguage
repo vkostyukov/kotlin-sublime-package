@@ -109,7 +109,7 @@
         "types": {
             "patterns": [
                 {
-                    "match": "\\b(Any|Unit|String|Int|Boolean|Char|Long|Double|Float|Short|Byte|dynamic)\\b", 
+                    "match": "\\b(Nothing|Any|Unit|String|CharSequence|Int|Boolean|Char|Long|Double|Float|Short|Byte|dynamic)\\b", 
                     "name": "storage.type.buildin.kotlin"
                 },
                 {
@@ -117,7 +117,7 @@
                     "name": "storage.type.buildin.array.kotlin"
                 },
                 {
-                    "begin": "\\b(Array|List|Map)<\\b",
+                    "begin": "\\b(Array|Collection|List|Map|Set|MutableList|MutableMap|MutableSet|Sequence)<\\b",
                     "beginCaptures": {
                         "1": {
                             "name": "storage.type.buildin.collection.kotlin"
@@ -142,20 +142,6 @@
                         },
                         {
                             "include": "#keywords" 
-                        }
-                    ]
-                },
-                {
-                    "begin": "(#)\\(",
-                    "beginCaptures": {
-                        "1": {
-                            "name": "keyword.operator.tuple.kotlin"
-                        }
-                    },
-                    "end": "\\)",
-                    "patterns": [
-                        { 
-                            "include": "#expressions" 
                         }
                     ]
                 },
@@ -231,21 +217,26 @@
             ]
         },
         "classes": {
-            "begin": "(?=\\s*(?:companion|class|object|interface))",
-            "end": "}|(?=$)",
+            "begin": "(?<!::)(?=\\b(?:companion|class|object|interface)\\b)",
+            "end": "(?=$|\\})",
             "patterns": [
                 {
-                    "begin": "\\b(companion\s*)?(class|object|interface)\\b",
+                    "include" : "#comments"
+                },
+                {
+                    "begin": "\\b(companion\\s*)?(class|object|interface)\\b",
                     "beginCaptures": {
                         "1": {
-                            "name": "keyword.other.kotlin"
+                            "name": "storage.modifier.kotlin"
+                        },
+                        "2": {
+                            "name": "storage.modifier.kotlin"
                         }
                     },
-                    "end": "(?=<|{|\\(|:)",
+                    "end": "(?=<|\\{|\\(|:|$)",
                     "patterns": [
                         {
-                            "match": "\\b(object)\\b",
-                            "name": "keyword.other.kotlin"
+                            "include" : "#comments"
                         },
                         {
                             "match": "\\w+",
@@ -307,8 +298,8 @@
             ]
         },
         "variables": {
-            "begin": "(?=\\s*(?:var|val))",
-            "end": "(?=:|=|$)",
+            "begin": "(?=\\s*\\b(?:var|val)\\b)",
+            "end": "(?=:|=|(\\b(by)\\b)|$)",
             "patterns": [
                 {
                     "begin": "\\b(var|val)\\b",
@@ -317,7 +308,7 @@
                             "name": "keyword.other.kotlin" 
                         }
                     },
-                    "end": "(?=:|=|$)",
+                    "end": "(?=:|=|(\\b(by)\\b)|$)",
                     "patterns": [
                         {
                             "begin": "<",
@@ -352,6 +343,20 @@
                         },
                         { 
                             "include": "#getters-and-setters" 
+                        }
+                    ]
+                },
+                {
+                    "begin": "\\b(by)\\b",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.other.kotlin"
+                        }
+                    },
+                    "end": "(?=$)",
+                    "patterns": [
+                        {
+                            "include": "#expressions"
                         }
                     ]
                 },
@@ -456,8 +461,8 @@
             ]
         },
         "functions": {
-            "begin": "(?=\\s*(?:fun))",
-            "end": "}|(?=$)",
+            "begin": "(?=\\s*\\b(?:fun)\\b)",
+            "end": "(?=$|\\})",
             "patterns": [
                 {
                     "begin": "\\b(fun)\\b",
@@ -699,7 +704,7 @@
                     "name": "constant.language.kotlin"
                 }, 
                 {
-                    "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)([LlFfUuDd]|UL|ul)?\\b", 
+                    "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)([LlFf])?\\b", 
                     "name": "constant.numeric.kotlin"
                 },
                 {
@@ -711,7 +716,7 @@
         "keywords": {
             "patterns": [
                 {
-                    "match": "\\b(var|val|public|private|protected|abstract|final|enum|open|attribute|annotation|override|inline|var|val|vararg|lazy|in|out|internal|data|tailrec|operator|infix|const|yield|typealias|typeof)\\b",
+                    "match": "\\b(var|val|public|private|protected|abstract|final|sealed|enum|open|attribute|annotation|override|inline|vararg|in|out|internal|data|tailrec|operator|infix|const|yield|typealias|typeof|reified|suspend)\\b",
                     "name": "storage.modifier.kotlin"
                 },
                 {
@@ -723,7 +728,7 @@
                     "name": "keyword.control.kotlin"
                 },
                 {
-                    "match": "\\b(in|is|as|assert)\\b", 
+                    "match": "\\b(in|is|!in|!is|as|as\\?|assert)\\b", 
                     "name": "keyword.operator.kotlin"
                 },
                 {
@@ -735,12 +740,28 @@
                     "name": "keyword.operator.assignment.kotlin"
                 },
                 {
+                    "match": "(::)", 
+                    "name": "keyword.operator.kotlin"
+                },
+                {
                     "match": "(:)", 
                     "name": "keyword.operator.declaration.kotlin"
                 },
                 {
+                    "match": "\\b(by)\\b", 
+                    "name": "keyword.other.by.kotlin"
+                },
+                {
+                    "match": "(\\?\\.)", 
+                    "name": "keyword.operator.safenav.kotlin"
+                }, 
+                {
                     "match": "(\\.)", 
                     "name": "keyword.operator.dot.kotlin"
+                }, 
+                {
+                    "match": "(\\?:)", 
+                    "name": "keyword.operator.elvis.kotlin"
                 }, 
                 {
                     "match": "(\\-\\-|\\+\\+)", 
