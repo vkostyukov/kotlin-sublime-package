@@ -1,7 +1,7 @@
-Kotlin Sublime Text 2 Package 
+Kotlin Sublime Text Package 
 =============================
 
-This is [Sublime Text 2](http://www.sublimetext.com/) package for [Kotlin](http://kotlin.jetbrains.org/) programming language.
+This is [Sublime Text](http://www.sublimetext.com/) package for [Kotlin](http://kotlin.jetbrains.org/) programming language.
 
 ![Kotlin Sublime Text 2 Package Screenshoot](https://raw.github.com/vkostyukov/kotlin-sublime-package/master/scrot.png)
 
