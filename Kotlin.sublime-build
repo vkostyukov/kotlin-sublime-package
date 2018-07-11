@@ -7,6 +7,9 @@
         "cmd": "kotlinc \"${file}\" -include-runtime -d ${file_base_name}.jar",
         "name": "Compile"
       },{
+        "cmd": "kotlinc \"${file}\" -include-runtime -d ${file_base_name}.jar || exit 1; java -jar ${file_base_name}.jar",
+        "name": "Compile + run"
+      },{
         "name": "Run",
         "cmd": "java -jar ${file_base_name}.jar"
     }],
